@@ -8,11 +8,11 @@ To use this repository just add this to your *pom.xml*:
 
 <pre>
 &lt;repositories&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;repository&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;inovex-releases&lt;/id&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;
-<br>&lt;/repositories&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;repository&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;inovex-releases&lt;/id&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;
+&lt;/repositories&gt;
 </pre>
 
 See http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/ for detailed
@@ -33,15 +33,15 @@ git clone git@github.com:inovex/mvn-repo.git
 
 <pre>
 &lt;distributionManagement&gt;
-<br>	&lt;repository&gt;
-<br>		&lt;id&gt;repo&lt;/id&gt;
-<br>		&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
-<br>	&lt;/repository&gt;
-<br>	&lt;snapshotRepository&gt;
-<br>		&lt;id&gt;snapshot-repo&lt;/id&gt;
-<br>		&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/snapshots&lt;/url&gt;
-<br>	&lt;/snapshotRepository&gt;
-<br>&lt;/distributionManagement&gt;
+	&lt;repository&gt;
+		&lt;id&gt;repo&lt;/id&gt;
+		&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+	&lt;/repository&gt;
+	&lt;snapshotRepository&gt;
+		&lt;id&gt;snapshot-repo&lt;/id&gt;
+		&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/snapshots&lt;/url&gt;
+	&lt;/snapshotRepository&gt;
+&lt;/distributionManagement&gt;
 </pre>
 
 
@@ -51,32 +51,32 @@ see also http://maven.apache.org/plugin-developers/cookbook/attach-source-javado
 
 <pre>
 &lt;plugins&gt;
-<br>&nbsp;&nbsp;&lt;plugin&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;executions&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;execution&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;attach-sources&lt;/id&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goals&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goal&gt;jar&lt;/goal&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/goals&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/execution&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executions&gt;
-<br>&nbsp;&nbsp;&lt;/plugin&gt;
-<br>
-<br>&nbsp;&nbsp;&lt;plugin&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;executions&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;execution&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;attach-javadocs&lt;/id&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goals&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goal&gt;jar&lt;/goal&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/goals&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/execution&gt;
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executions&gt;
-<br>&nbsp;&nbsp;&lt;/plugin&gt;
-<br>&lt;/plugins&gt;
+&nbsp;&nbsp;&lt;plugin&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;executions&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;execution&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;attach-sources&lt;/id&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goals&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goal&gt;jar&lt;/goal&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/goals&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/execution&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executions&gt;
+&nbsp;&nbsp;&lt;/plugin&gt;
+
+&nbsp;&nbsp;&lt;plugin&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;executions&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;execution&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;attach-javadocs&lt;/id&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goals&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goal&gt;jar&lt;/goal&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/goals&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/execution&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executions&gt;
+&nbsp;&nbsp;&lt;/plugin&gt;
+&lt;/plugins&gt;
 </pre>
 
 
