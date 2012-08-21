@@ -4,6 +4,17 @@
 
 ## Usage
 
+To use this repository just add this to your *pom.xml*:
+
+<code>
+&lt;repositories&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;repository&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;inovex-releases&lt;/id&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;
+<br>&lt;/repositories&gt;
+</code>
+
 See http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/ for detailed
  instructions on how to use a github repository as maven repository.
 
