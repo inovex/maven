@@ -6,17 +6,22 @@
 
 To use this repository just add this to your *pom.xml*:
 
-<code>
+<pre>
 &lt;repositories&gt;
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;repository&gt;
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;inovex-releases&lt;/id&gt;
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;
 <br>&lt;/repositories&gt;
-</code>
+</pre>
 
 See http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/ for detailed
  instructions on how to use a github repository as maven repository.
+
+## Add artifacts
+
+To add artifacts to the repository you must have write access to the repository.
+Follow the instructions below to publish artifacts to the repository.
 
 ### First clone the maven respository
 
@@ -26,7 +31,7 @@ git clone git@github.com:inovex/mvn-repo.git
 
 ### Alter the *pom.xml* for the project you want to deploy
 
-<code>
+<pre>
 &lt;distributionManagement&gt;
 <br>	&lt;repository&gt;
 <br>		&lt;id&gt;repo&lt;/id&gt;
@@ -37,14 +42,14 @@ git clone git@github.com:inovex/mvn-repo.git
 <br>		&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/snapshots&lt;/url&gt;
 <br>	&lt;/snapshotRepository&gt;
 <br>&lt;/distributionManagement&gt;
-</code>
+</pre>
 
 
 You have to enable javadoc and source generation by attaching javadoc and source
 plugin to the jar goal.
 see also http://maven.apache.org/plugin-developers/cookbook/attach-source-javadoc-artifacts.html
 
-<code>
+<pre>
 &lt;plugins&gt;
 <br>&nbsp;&nbsp;&lt;plugin&gt;
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
@@ -72,7 +77,7 @@ see also http://maven.apache.org/plugin-developers/cookbook/attach-source-javado
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executions&gt;
 <br>&nbsp;&nbsp;&lt;/plugin&gt;
 <br>&lt;/plugins&gt;
-</code>
+</pre>
 
 
 ### Now deploy the artifacts from the project into the local clone of the maven repository.
