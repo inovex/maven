@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Mvn-repo : Maven repository for artifacts not available from public repositories" />
+    <meta name="description" content="Maven : Maven repository for artifacts published by inovex developers" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Mvn-repo</title>
+    <title>Maven</title>
   </head>
 
   <body>
@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/inovex/mvn-repo">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/inovex/maven">View on GitHub</a>
 
-          <h1 id="project_title">Mvn-repo</h1>
-          <h2 id="project_tagline">Maven repository for artifacts not available from public repositories</h2>
+          <h1 id="project_title">Maven</h1>
+          <h2 id="project_tagline">Maven repository for artifacts published by inovex developers</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/inovex/mvn-repo/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/inovex/mvn-repo/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/inovex/maven/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/inovex/maven/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -43,7 +43,7 @@
 &lt;repositories&gt;
     &lt;repository&gt;
         &lt;id&gt;inovex-releases&lt;/id&gt;
-        &lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+        &lt;url&gt;http://inovex.github.com/maven/releases&lt;/url&gt;
     &lt;/repository&gt;
 &lt;/repositories&gt;
 </pre>
@@ -59,7 +59,7 @@ Follow the instructions below to publish artifacts to the repository.</p>
 <h3>First clone the maven respository</h3>
 
 <pre>
-git clone git@github.com:inovex/mvn-repo.git
+git clone git@github.com:inovex/maven.git maven-inovex
 </pre>
 
 <h3>Alter the <em>pom.xml</em> for the project you want to deploy</h3>
@@ -68,11 +68,11 @@ git clone git@github.com:inovex/mvn-repo.git
 &lt;distributionManagement&gt;
     &lt;repository&gt;
         &lt;id&gt;repo&lt;/id&gt;
-        &lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+        &lt;url&gt;http://inovex.github.com/maven/releases&lt;/url&gt;
     &lt;/repository&gt;
     &lt;snapshotRepository&gt;
         &lt;id&gt;snapshot-repo&lt;/id&gt;
-        &lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/snapshots&lt;/url&gt;
+        &lt;url&gt;http://inovex.github.com/maven/snapshots&lt;/url&gt;
     &lt;/snapshotRepository&gt;
 &lt;/distributionManagement&gt;
 </pre>
@@ -111,19 +111,25 @@ see also <a href="http://maven.apache.org/plugin-developers/cookbook/attach-sour
 &lt;/plugins&gt;
 </pre>
 
+<h3>Alter ~/.m2/settings.xml to enable the repository for all projects</h3>
+
+<pre>
+&lt;settings&gt;<br>  &lt;profiles&gt;<br>    &lt;profile&gt;<br>      &lt;id&gt;inovex-repos&lt;/id&gt;<br>      &lt;activation&gt;<br>        &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;<br>      &lt;/activation&gt;<br>      &lt;repositories&gt;<br>          &lt;id&gt;inovex&lt;/id&gt;<br>          &lt;url&gt;http://inovex.github.com/maven/releases&lt;/url&gt;<br>        &lt;/repository&gt;<br>      &lt;/repositories&gt;<br>    &lt;/profile&gt;<br>  &lt;/profiles&gt;<br>&lt;/settings&gt;
+</pre>
+
 <h3>Now deploy the artifacts from the project into the local clone of the maven repository.</h3>
 
 <p>The file url is the path to the local maven repository clone.</p>
 
 <pre>
-mvn -DaltDeploymentRepository=repo::default::file:../mvn-repo/releases clean deploy
+mvn -DaltDeploymentRepository=repo::default::file:../maven-inovex/releases clean deploy
 </pre>
 
 <h3>Commit the artifacts added to the repository and push them upstream</h3>
 
 <pre>
-Rubens-MacBook-Pro:mvn-repo rjenster$ git commit -m "Added artifact: nl.bitwalker:UserAgentUtils:1.6"
-Rubens-MacBook-Pro:mvn-repo rjenster$ git push origin master
+Rubens-MacBook-Pro:maven-inovex rjenster$ git commit -m "Added artifact: nl.bitwalker:UserAgentUtils:1.6"
+Rubens-MacBook-Pro:maven-inovex rjenster$ git push origin master
 </pre>
       </section>
     </div>
@@ -131,7 +137,7 @@ Rubens-MacBook-Pro:mvn-repo rjenster$ git push origin master
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Mvn-repo maintained by <a href="https://github.com/inovex">inovex</a></p>
+        <p class="copyright">Maven maintained by <a href="https://github.com/inovex">inovex</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
