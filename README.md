@@ -10,7 +10,7 @@ To use this repository just add this to your *pom.xml*:
 &lt;repositories&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;repository&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;inovex-releases&lt;/id&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;http://inovex.github.com/maven/releases&lt;/url&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;
 &lt;/repositories&gt;
 </pre>
@@ -26,7 +26,7 @@ Follow the instructions below to publish artifacts to the repository.
 ### First clone the maven respository
 
 <pre>
-git clone git@github.com:inovex/mvn-repo.git
+git clone git@github.com:inovex/maven.git maven-inovex
 </pre>
 
 ### Alter the *pom.xml* for the project you want to deploy
@@ -35,11 +35,11 @@ git clone git@github.com:inovex/mvn-repo.git
 &lt;distributionManagement&gt;
 	&lt;repository&gt;
 		&lt;id&gt;repo&lt;/id&gt;
-		&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+		&lt;url&gt;http://inovex.github.com/maven/releases&lt;/url&gt;
 	&lt;/repository&gt;
 	&lt;snapshotRepository&gt;
 		&lt;id&gt;snapshot-repo&lt;/id&gt;
-		&lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/snapshots&lt;/url&gt;
+		&lt;url&gt;http://inovex.github.com/maven/snapshots&lt;/url&gt;
 	&lt;/snapshotRepository&gt;
 &lt;/distributionManagement&gt;
 </pre>
@@ -80,17 +80,23 @@ see also http://maven.apache.org/plugin-developers/cookbook/attach-source-javado
 </pre>
 
 
+### Alter ~/.m2/settings.xml to enable the repository for all projects
+
+<pre>
+&lt;settings&gt;<br/>&nbsp;&nbsp;&lt;profiles&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;profile&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;inovex-repos&lt;/id&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;activation&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/activation&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;repositories&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;inovex&lt;/id&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;http://inovex.github.com/maven/releases&lt;/url&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repositories&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/profile&gt;<br/>&nbsp;&nbsp;&lt;/profiles&gt;<br/>&lt;/settings&gt;
+</pre>
+
 ### Now deploy the artifacts from the project into the local clone of the maven repository.
 
 The file url is the path to the local maven repository clone.
 
 <pre>
-mvn -DaltDeploymentRepository=repo::default::file:../mvn-repo/releases clean deploy
+mvn -DaltDeploymentRepository=repo::default::file:../maven-inovex/releases clean deploy
 </pre>
 
 ### Commit the artifacts added to the repository and push them upstream
 
 <pre>
-Rubens-MacBook-Pro:mvn-repo rjenster$ git commit -m "Added artifact: nl.bitwalker:UserAgentUtils:1.6"
-Rubens-MacBook-Pro:mvn-repo rjenster$ git push origin master
+Rubens-MacBook-Pro:maven-inovex rjenster$ git commit -m "Added artifact: nl.bitwalker:UserAgentUtils:1.6"
+Rubens-MacBook-Pro:maven-inovex rjenster$ git push origin master
 </pre>
