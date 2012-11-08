@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Mvn-repo : Maven repository for artifacts not available from public repositories" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Mvn-repo</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/inovex/mvn-repo">View on GitHub</a>
+
+          <h1 id="project_title">Mvn-repo</h1>
+          <h2 id="project_tagline">Maven repository for artifacts not available from public repositories</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/inovex/mvn-repo/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/inovex/mvn-repo/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>About</h1>
+
+<p><a href="http://www.inovex.de/">inovex</a> public maven repository for artifacts not available from other public repositories.</p>
+
+<h2>Usage</h2>
+
+<p>To use this repository just add this to your <em>pom.xml</em>:</p>
+
+<pre>
+&lt;repositories&gt;
+    &lt;repository&gt;
+        &lt;id&gt;inovex-releases&lt;/id&gt;
+        &lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+    &lt;/repository&gt;
+&lt;/repositories&gt;
+</pre>
+
+<p>See <a href="http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/">http://cemerick.com/2010/08/24/hosting-maven-repos-on-github/</a> for detailed
+ instructions on how to use a github repository as maven repository.</p>
+
+<h2>Add artifacts</h2>
+
+<p>To add artifacts to the repository you must have write access to the repository.
+Follow the instructions below to publish artifacts to the repository.</p>
+
+<h3>First clone the maven respository</h3>
+
+<pre>
+git clone git@github.com:inovex/mvn-repo.git
+</pre>
+
+<h3>Alter the <em>pom.xml</em> for the project you want to deploy</h3>
+
+<pre>
+&lt;distributionManagement&gt;
+    &lt;repository&gt;
+        &lt;id&gt;repo&lt;/id&gt;
+        &lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/releases&lt;/url&gt;
+    &lt;/repository&gt;
+    &lt;snapshotRepository&gt;
+        &lt;id&gt;snapshot-repo&lt;/id&gt;
+        &lt;url&gt;https://github.com/inovex/mvn-repo/raw/master/snapshots&lt;/url&gt;
+    &lt;/snapshotRepository&gt;
+&lt;/distributionManagement&gt;
+</pre>
+
+<p>You have to enable javadoc and source generation by attaching javadoc and source
+plugin to the jar goal.
+see also <a href="http://maven.apache.org/plugin-developers/cookbook/attach-source-javadoc-artifacts.html">http://maven.apache.org/plugin-developers/cookbook/attach-source-javadoc-artifacts.html</a></p>
+
+<pre>
+&lt;plugins&gt;
+  &lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;
+    &lt;executions&gt;
+      &lt;execution&gt;
+        &lt;id&gt;attach-sources&lt;/id&gt;
+        &lt;goals&gt;
+          &lt;goal&gt;jar&lt;/goal&gt;
+        &lt;/goals&gt;
+      &lt;/execution&gt;
+    &lt;/executions&gt;
+  &lt;/plugin&gt;
+
+  &lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+    &lt;executions&gt;
+      &lt;execution&gt;
+        &lt;id&gt;attach-javadocs&lt;/id&gt;
+        &lt;goals&gt;
+          &lt;goal&gt;jar&lt;/goal&gt;
+        &lt;/goals&gt;
+      &lt;/execution&gt;
+    &lt;/executions&gt;
+  &lt;/plugin&gt;
+&lt;/plugins&gt;
+</pre>
+
+<h3>Now deploy the artifacts from the project into the local clone of the maven repository.</h3>
+
+<p>The file url is the path to the local maven repository clone.</p>
+
+<pre>
+mvn -DaltDeploymentRepository=repo::default::file:../mvn-repo/releases clean deploy
+</pre>
+
+<h3>Commit the artifacts added to the repository and push them upstream</h3>
+
+<pre>
+Rubens-MacBook-Pro:mvn-repo rjenster$ git commit -m "Added artifact: nl.bitwalker:UserAgentUtils:1.6"
+Rubens-MacBook-Pro:mvn-repo rjenster$ git push origin master
+</pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Mvn-repo maintained by <a href="https://github.com/inovex">inovex</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
